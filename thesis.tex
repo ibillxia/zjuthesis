@@ -1,0 +1,254 @@
+\documentclass[oneside]{ZJUthesis}
+
+% 该文档中首字符为“%”的均为注释行，不会在论文中出现
+
+% 论文默认为双面模式，需单面模式请将第一行换为如下所示：
+% \documentclass[oneside]{ZJUthesis}
+
+% 取消目录中链接的颜色，方便打印
+% 如需颜色，请将“false”改为“true”
+\hypersetup{colorlinks=false}
+
+% 这里几行代码使得目录中的“第几章” 和后面的章节名称不致发生重叠
+\makeatletter
+\renewcommand{\numberline}[1]{%
+\settowidth\@tempdimb{#1\hspace{0.5em}}%
+\ifdim\@tempdima<\@tempdimb%
+  \@tempdima=\@tempdimb%
+\fi%
+\hb@xt@\@tempdima{\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb}
+\makeatother
+
+%\usepackage[sectionbib]{chapterbib}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文字体设定
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\songti
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 论文封面部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 中文封面内容
+
+% 中图分类号
+\classification{TM863}
+
+% 单位代码
+\serialnumber{10335}
+
+% 密级，如需密级则将其前“%”去掉
+%\SecretLevel{绝密}
+
+% 学号
+\PersonalID{21221277}
+
+\title{论文题目第一行}
+% 如果标题一行写不下，就写成两行，在下面的命令里写第二行，不需要两行则注释掉
+\titletl{论文题目第二行}
+%\titletl{test}
+
+%英文题目
+\Etitle{English Title The 1st Line}
+% 如果一行写不下，同中文题目设定，一行写不下则写两行，不需要就注释掉
+\Etitletl{English Title The 2nd Line}
+%\Etitletll{}
+
+% 作者
+\author{作者}
+\Eauthor{Author}
+
+\degree{硕士}
+\Edegree{Master of Engineering}
+
+% 导师
+\supervisor{导师}
+\Esupervisor{Prof. Supervisor}
+
+% 合作导师，如果有的话，去掉注释
+% \cpsupervisor{}
+% \Ecpsupervisor{}
+
+% 专业名称
+\major{计算机科学与技术}
+\Emajor{Computer Science and Technology}
+
+% 研究方向
+\researchdm{研究方向}
+\Eresearchdm{research domain}
+
+% 所属学院
+\institute{计算机学院}
+\Einstitute{Computer Science and Technology}
+
+%论文提交日期
+\submitdate{二〇一五年一月五日}
+\Esubmitdate{2015-1-5}
+
+% 答辨日期
+\defenddate{2015年3月10日}
+
+% 生成封面
+\makeCoverPage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 中文题名页内容
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 论文评阅人信息 注意两字名与三字名，两字职称与三字职称的写法，便于对齐
+% 多余的名额直接注释掉即可，比如三个评阅人，把评阅人D，E注释掉即可
+\reviewersA{评阅人\hspace{1.5em}教授\hspace{1.5em}浙江大学\hspace{1em}}
+\reviewersB{评阅人\hspace{1.5em}教授\hspace{1.5em}浙江大学\hspace{1em}}
+\reviewersC{评阅人\hspace{1.5em}教授\hspace{1.5em}浙江大学\hspace{1em}}
+\reviewersD{评阅人\hspace{1.5em}教授\hspace{1.5em}浙江大学\hspace{1em}}
+\reviewersE{评阅人\hspace{1.5em}教授\hspace{1.5em}浙江大学\hspace{1em}}
+
+% 答辩委员会信息，如果某一个单位比较长，
+% 请在其它较短后面补上{hspace{Xem}}，X是比最长的单位名少几个字
+% 如果实际人数少于6人，多余的注释掉即可
+\chairman{委员\hspace{1.5em}教授\hspace{1.5em}浙江大学}
+\commissionerA{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
+\commissionerB{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
+\commissionerC{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
+\commissionerD{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
+\commissionerE{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
+
+% 生成中文题名页
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 英文封面内容，硕士论文可不要此页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 英文题名
+\englishtitle{English Title The 1st Line}
+% 如果题名一行写不下，就写到第二行，不需要则将其注释掉
+\englishtitletl{English Title The 2nd Line}
+%\englishtitletll{}
+
+% 评阅人信息，名字，职称，单位尽量用简写，否则会写不下
+\EreviewersA{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EreviewersB{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EreviewersC{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EreviewersD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EreviewersE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+
+% 答辩委员会信息，同样尽量用简写，否则会写不下
+\Echairman{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EcommissionerA{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EcommissionerB{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EcommissionerC{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EcommissionerD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+\EcommissionerE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
+
+% 生成英文封面
+\makeenglishtitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 原创声明与版权协议页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\SignautreDateA{2015}{3}{10}
+\SignautreDateB{2015}{3}{10}
+\SignautreDateC{2015}{3}{10}
+% 生成原创声明与版权协议页
+\makeOSandCPRTpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 论文部分开始
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUfrontmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 勘误页，一般没有
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/corrigenda}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 序言页，一般没有
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/preface}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/abstractC}
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}  % 无页眉页脚的空白页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 英文摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/abstractE}
+{\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}  % 无页眉页脚的空白页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 目录页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\ZJUcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 插图列表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUListofFigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 表格列表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUListofTables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 缩写、符号清单、术语表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/symbol}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文内容部分开始
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUmainmatter
+
+\include{./Chapters/chap1}
+
+\include{./Chapters/chap2}
+
+\include{./Chapters/chap3}
+
+\include{./Chapters/chap4}
+
+\include{./Chapters/chap5}
+
+\include{./Chapters/chap6}
+
+\ZJUbackmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 参考文献
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUthesisbib{thesisbib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 附录
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\include{./Chapters/appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 索引
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 个人简历
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/resume}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 发表论文目录
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/publications}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 致谢页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{./Chapters/thanks}
+
+\end{document}
