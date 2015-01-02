@@ -1,3 +1,40 @@
 \input{./Chapters/chap3_1}
 
 \input{./Chapters/chap3_2}
+
+\section{插入算法伪代码}
+以下是插入算法伪代码示例，如算法\ref{alg:skeleton_dt}所示。
+
+\begin{algorithm}[!htb]
+\caption{基于距离变换的骨架提取}
+\label{alg:skeleton_dt}
+\begin{algorithmic}[1]
+\Require 前景的二值图 bw \Comment{像素的灰度值为0或1} 
+\Ensure 骨架图 skel
+\State // 第1次遍历：从上往下，从左往右
+\For{$i=1,\dots ,M$} \Comment{M是二值图的高度}
+    \For{$j=1,\dots ,N$} \Comment{N是二值图的宽度}
+        \State bw[i][j] = 1 + min(bw[i][j-1], bw[i-1][j])  \Comment{min函数取极小值} 
+    \EndFor
+\EndFor
+\State // 第2次遍历：从下往上，从右往左
+\For{$i=M,\dots ,1$}
+    \For{$j=N,\dots ,1$}
+        \State bw[i][j] = 1 + min(bw[i][j], bw[i+1][j], bw[i][j+1])
+    \EndFor
+\EndFor
+\State // 第3次遍历：获取骨架图
+\State skel 的空间分配，并将每个像素初始化为0
+\For{$i=1,\dots ,M$}
+    \For{$j=1,\dots ,N$}
+        \State t = max(bw[i-1][j], bw[i+1][j], bw[i][j-1], bw[i][j+1])  \Comment{max函数取极大值} 
+        \State t = max(t, bw[i-1][j-1],bw[i-1][j+1],bw[i+1][j-1],bw[i+1][j+1])
+        \If {bw[i][j]>=t}
+        	\State skel[i][j]=1 \Comment{骨架点} 
+        \Else 
+        	\State skel[i][j]=0
+        \EndIf
+    \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
