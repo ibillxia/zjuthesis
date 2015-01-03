@@ -217,6 +217,18 @@ includehead, includefoot]{geometry}
   {\hbox to 2em{\hfil\ZJU@value@signaturedateCm\hfil}}月
   {\hbox to 2em{\hfil\ZJU@value@signaturedateCd\hfil}}日
 }
+
+
+% 定理，假设，定义，证明
+\newtheoremstyle{ZJUtheorem}
+   {9pt}{9pt}{\ttfamily}{0pt}{\lishu}{：}{0pt}{}
+\theoremstyle{ZJUtheorem}
+\newtheorem{hypo}{假设~}[chapter]
+\newtheorem{defin}{定义~}[chapter]
+\newtheorem{theo}{定理~}[chapter]
+\newtheorem{pro}{证明~}[chapter]
+
+
 % 制作封面的命令
 \newcommand\makeCoverPage{%
   % 这个地方写的是封面上的分类号与学号，字体字号可以更改
