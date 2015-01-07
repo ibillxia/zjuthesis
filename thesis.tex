@@ -7,7 +7,7 @@
 
 % 取消目录中链接的颜色，方便打印
 % 如需颜色，请将“false”改为“true”
-\hypersetup{colorlinks=false}
+\hypersetup{colorlinks=true}
 
 % 这里几行代码使得目录中的“第几章” 和后面的章节名称不致发生重叠
 \makeatletter
@@ -40,9 +40,10 @@
 
 % 密级，如需密级则将其前“%”去掉
 %\SecretLevel{绝密}
+\SecretLevel{密级}
 
 % 学号
-\PersonalID{21221277}
+\PersonalID{12345678}
 
 \title{论文题目第一行}
 % 如果标题一行写不下，就写成两行，在下面的命令里写第二行，不需要两行则注释掉
@@ -106,7 +107,7 @@
 % 答辩委员会信息，如果某一个单位比较长，
 % 请在其它较短后面补上{hspace{Xem}}，X是比最长的单位名少几个字
 % 如果实际人数少于6人，多余的注释掉即可
-\chairman{委员\hspace{1.5em}教授\hspace{1.5em}浙江大学}
+\chairman{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
 \commissionerA{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
 \commissionerB{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}
 \commissionerC{委\quad 员\quad 教授\quad 浙江大学\hspace{1em}}

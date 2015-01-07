@@ -3,4 +3,6 @@ makeindex thesis.idx
 bibtex thesis
 xelatex thesis
 xelatex thesis
-thesis.pdf
+copy thesis.pdf README.pdf
+README.pdf
+
