@@ -759,6 +759,16 @@ includehead, includefoot]{geometry}
 }
 
 % 插图目录
+% 给目录项前添加“图”字
+\usepackage{tocloft}
+
+\newlength{\mylen}
+\renewcommand{\cftfigpresnum}{\figurename\enspace}
+\renewcommand{\cftfigaftersnum}{}
+\settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\mylen}
+
+% 生成插图目录
 \newcommand\ZJUListofFigures{%
   \renewcommand{\cftfigfont}{\songti\zihao{-4}}
   \renewcommand{\cftfigleader}{\cftdotfill{\cftdot}}
@@ -769,6 +779,12 @@ includehead, includefoot]{geometry}
 }
 
 % 附表目录
+% 给目录项前添加“表”字
+\renewcommand{\cfttabpresnum}{\tablename\enspace}
+\renewcommand{\cfttabaftersnum}{}
+\settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\mylen}
+% 生成表格目录
 \newcommand\ZJUListofTables{%
   \renewcommand{\cfttabfont}{\songti\zihao{-4}}
   \renewcommand{\cfttableader}{\cftdotfill{\cftdot}}
