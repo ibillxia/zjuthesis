@@ -78,6 +78,7 @@ top=51pt,bottom=51pt,left=68pt,right=57pt,%
 headsep=14pt,footskip=26pt,%
 includehead, includefoot]{geometry}
 
+\usepackage{listings}
 
 % 奇数页左边边距是1.5cm
 %\oddsidemargin -0.14 true cm
