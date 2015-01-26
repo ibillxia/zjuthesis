@@ -1,13 +1,10 @@
+%%
 %% 这是浙江大学硕士博士毕业论文LaTeX模版
 %%
-%% 王东举于2013年撰写博士论文期间，根据上一版本反馈意见，对其进行增补修订。
-%% 该模板修订部分，主要是出现了两个版本
-%% GBK版本和UTF-8版本
-%% 
+
 %% 本模版是在88TeX版提供的数学系毕业论文模版2006年版基础上
 %% 由王东举于2011年9-10月间修改出第一版，欢迎提出修改意见，欢迎在此基础上自行修改尝试
 %% 邮箱：shuwei1204@163.com
-%% 
 %% 
 %% 提供该模版的运行基础
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
@@ -63,12 +60,13 @@
 % PDF文档超链接及书签标记，具体选项意义参考hyperref说明文档
 % hyperref包要2011年版的才行
 \hypersetup{CJKbookmarks=true,%
-       bookmarksnumbered,%
-               linkcolor=blue,%
-              plainpages=false,%
-            pdfstartview=FitH,
-               hidelinks
-         }
+  bookmarksnumbered,%
+  linkcolor=blue,%
+  plainpages=false,%
+  pdfstartview=FitH,
+  hidelinks
+}
+
 % 文档开始导入默认配置
 \AtBeginDocument{\makeatletter\input{ZJUthesis.cfg}\makeatother}
 
@@ -78,7 +76,6 @@ top=51pt,bottom=51pt,left=68pt,right=57pt,%
 headsep=14pt,footskip=26pt,%
 includehead, includefoot]{geometry}
 
-\usepackage{listings}
 
 % 奇数页左边边距是1.5cm
 %\oddsidemargin -0.14 true cm
@@ -219,7 +216,6 @@ includehead, includefoot]{geometry}
   {\hbox to 2em{\hfil\ZJU@value@signaturedateCd\hfil}}日
 }
 
-
 % 定理，假设，定义，证明
 \newtheoremstyle{ZJUtheorem}
    {9pt}{9pt}{\ttfamily}{0pt}{\lishu}{：}{0pt}{}
@@ -229,29 +225,63 @@ includehead, includefoot]{geometry}
 \newtheorem{theo}{定理~}[chapter]
 \newtheorem{pro}{证明~}[chapter]
 
+% 插入 Matlab 代码设置
+\usepackage{listings}
+\lstset{ %
+extendedchars=false,            % Shutdown no-ASCII compatible
+language=Matlab,                % choose the language of the code
+basicstyle=\footnotesize\tt,    % the size of the fonts that are used for the code
+tabsize=3,                      % sets default tabsize to 3 spaces
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny,              % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line
+                                % will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code   %
+keywordstyle=\color[rgb]{0,0,1},                % keywords
+commentstyle=\color[rgb]{0.133,0.545,0.133},    % comments
+stringstyle=\color[rgb]{0.627,0.126,0.941},      % strings
+backgroundcolor=\color{white}, % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,                 % adds a frame around the code
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false        % sets if automatic breaks should only happen at whitespace
+%title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                % also try caption instead of title
+%mathescape=true,escapechar=?    % escape to latex with ?..?
+%escapeinside={\%*}{*)},         % if you want to add a comment within your code
+%columns=fixed,                  % nice spacing
+%morestring=[m]',                % strings
+%morekeywords={%,...},%          % if you want to add more keywords to the set
+%    break,case,catch,continue,elseif,else,end,for,function,global,%
+%    if,otherwise,persistent,return,switch,try,while,...},%
+}
 
 % 制作封面的命令
 \newcommand\makeCoverPage{%
   % 这个地方写的是封面上的分类号与学号，字体字号可以更改
   \pagenumbering{alph}
-  \cleardoublepage
+  %\cleardoublepage
   \thispagestyle{empty}
   {
     \songti\zihao{-4}
     \linespread{1.3}
     \begin{center}
-      {\hspace{2em}
+      {%\hspace{2em}
       \ZJU@label@classification~
-      \ZJUunderline[90pt]{\ZJU@value@classification}
+      \ZJUunderline[60pt]{\ZJU@value@classification}
       \hfill
       \ZJU@label@serialnumber~
       \ZJUunderline[60pt]{\ZJU@value@serialnumber} \\
       \vspace{3pt}
       \ifx\ZJU@value@IsSecret\undefined
       \else
-        \hspace{2em}
+        %\hspace{2em}
+        %\hfill
         \ZJU@label@SecretLevel~
-        \ZJUunderline[90pt]{\ZJU@value@SecretLevel}
+        \ZJUunderline[60pt]{\ZJU@value@SecretLevel}
       \fi
       \hfill
       \ZJU@label@PersonalID~
@@ -261,22 +291,22 @@ includehead, includefoot]{geometry}
       \vspace{10mm}
       % 浙江大学四个字
       \ifpdf
-        \includegraphics[width=60.3mm]{./CoverPagepic/ZJDX.pdf} \\
+        \includegraphics[width=90.3mm]{./CoverPagepic/ZJDX.pdf} \\
       \else
-        \includegraphics[width=60.3mm]{./CoverPagepic/ZJDX.eps} \\
+        \includegraphics[width=90.3mm]{./CoverPagepic/ZJDX.eps} \\
       \fi
       % 这个尺寸可以更改
-      \vspace{4mm}
+      \vspace{8mm}
       %% \ZJU@value@school \\  \zihao{-1}
       % 这个博士学位论文在def文件中已有，当然在tex文件中还可以更改
-      \centerline{\songti \zihao{-1}{\ZJU@value@degree\ZJU@label@thesis} }
+      \centerline{\songti \zihao{-1}{\ZJU@label@thesisType} }
       % 这个尺寸可以更改
-      \vspace{4mm}
+      \vspace{20mm}
       % 这个地方调入浙大徽标
       \ifpdf
-        \includegraphics[width=22.8mm]{./CoverPagepic/QSY.pdf}    \\
+        \includegraphics[width=30.8mm]{./CoverPagepic/QSY.pdf}    \\
       \else
-        \includegraphics[width=22.8mm]{./CoverPagepic/QSY.eps}    \\
+        \includegraphics[width=30.8mm]{./CoverPagepic/QSY.eps}    \\
       \fi
     \end{center}
  
@@ -285,42 +315,42 @@ includehead, includefoot]{geometry}
     \begin{center}
       % 论文题目部分内容，可以修改
       \begin{tabular}{rl}
-        {\bfseries\songti\zihao{3}\ZJU@label@title:} 
+        {\songti\zihao{-2}\ZJU@label@title:} 
         &
-        \bfseries\songti\zihao{-2} \ZJUunderline[260pt]{\ZJU@value@title} \\[3mm]
+        \songti\zihao{-2} \ZJUunderline[260pt]{\ZJU@value@title} \\[3mm]
         &
         % 这个地方是做第二行标题的判断，如果标题一行写不下，有第二行则显示，否则不显示
         \ifx\ZJU@value@titletl\undefined
           \hfil
         \else
-          {\bfseries\songti\zihao{-2}\ZJUunderline[260pt]{\ZJU@value@titletl}}
+          {\songti\zihao{-2}\ZJUunderline[260pt]{\ZJU@value@titletl}}
         \fi \\[4mm]
-        {\bfseries\songti\zihao{3}\ZJU@label@Etitle:} 
-        &
-        {\bf\zihao{-2}\ZJUunderline[260pt]{\ZJU@value@Etitle}}\\[3mm]
-        &
+        %{\songti\zihao{3}\ZJU@label@Etitle:} 
+        %&
+        %{\zihao{-2}\ZJUunderline[260pt]{\ZJU@value@Etitle}}\\[3mm]
+        %&
         %同样是英文标题的多行判断，如果一行写不下，有第二行显示，否则不显示第二行
-        \ifx\ZJU@value@Etitletl\undefined
-          \hfil
-        \else
-          {\bf\zihao{-2}\ZJUunderline[260pt]{\ZJU@value@Etitletl}}
-        \fi\\
+        %\ifx\ZJU@value@Etitletl\undefined
+        %  \hfil
+        %\else
+        %  {\zihao{-2}\ZJUunderline[260pt]{\ZJU@value@Etitletl}}
+        %\fi\\
       \end{tabular}
 
       % 这个距离可以修改
       \vspace{15mm}  
 
       % 左右两边字体不同，定义两个宏AB来简化代码，这个功能用到了array宏包
-      \newcolumntype{A}{>{\songti}r<{}}
+      \newcolumntype{A}{>{\songti}l<{}}
       \newcolumntype{B}{>{\fangsong}l<{}}
       \zihao{4}
-      \begin{tabular}{A@{：}B}
-        \ZJU@label@author & \ZJUunderline[200pt]{\ZJU@value@author} \\[3mm]
-        \ZJU@label@supervisor & \ZJUunderline[200pt]{\ZJU@value@supervisor} \\[3mm]
+      \begin{tabular}{A@{ }B}
+        \ZJU@label@author : & \ZJUunderline[200pt]{\ZJU@value@author} \\[3mm]
+        \ZJU@label@supervisor : & \ZJUunderline[200pt]{\ZJU@value@supervisor} \\[3mm]
         % 判断有没有合作导师
         \ifx\ZJU@value@cpsupervisor\undefined
-        \else
-         \ZJU@label@cpsupervisor
+        %\else
+        % \ZJU@label@cpsupervisor
         \fi
         &
         \ifx\ZJU@value@cpsupervisor\undefined
@@ -328,16 +358,17 @@ includehead, includefoot]{geometry}
         \else
           \ZJUunderline[200pt]{\ZJU@value@cpsupervisor} \\[3mm]
         \fi
-        \ZJU@label@major & \ZJUunderline[200pt]{\ZJU@value@major} \\[3mm]
-        \ZJU@label@researchdm & \ZJUunderline[200pt]{\ZJU@value@researchdm} \\[3mm]
-        \ZJU@label@institute & \ZJUunderline[200pt]{\ZJU@value@institute} \\
+        \ZJU@label@major : & \ZJUunderline[200pt]{\ZJU@value@major} \\[3mm]
+        %\ZJU@label@researchdm & \ZJUunderline[200pt]{\ZJU@value@researchdm} \\[3mm]
+        \ZJU@label@institute : & \ZJUunderline[200pt]{\ZJU@value@institute} \\[3mm]
+        \ZJU@label@submitdate : & \ZJUunderline[200pt]{\ZJU@value@submitdate} \\
       \end{tabular}
     \end{center}
     % 插入适当的空白
-    \vfill
+    %\vfill
     % 最后一项 论文提交日期
-    \hfil{\bfseries\songti\zihao{-3}\hspace{4em}\ZJU@label@submitdate%
-    \ZJUunderline[150pt]{\ZJU@value@submitdate}}\hfil
+    %\hfil{\bfseries\songti\zihao{-3}\hspace{4em}\ZJU@label@submitdate%
+    %\ZJUunderline[150pt]{\ZJU@value@submitdate}}\hfil
   }
 }
 
@@ -356,53 +387,53 @@ includehead, includefoot]{geometry}
 	  
       %% \ZJU@value@school \\  \zihao{-1}
       % 这个博士学位论文在def文件中已有，当然在tex文件中还可以更改
-      \centerline{\songti \zihao{-2}{\ZJU@label@Ethesisu}}
-	  \centerline{\songti \zihao{-2}{\ZJU@label@Ethesisd}}
-	  \centerline{\songti \zihao{-2}{\ZJU@value@Edegree}}
+      \centerline{\songti \zihao{-1}{\ZJU@label@Ethesisu}}
+	  \centerline{\songti \zihao{-1}{\ZJU@label@Ethesisd}}
+	  \centerline{\songti \zihao{-1}{\ZJU@value@Edegree}}
       % 这个尺寸可以更改
       \vspace{20mm}
       % 这个地方调入浙大徽标
       \ifpdf
-        \includegraphics[width=22.8mm]{./CoverPagepic/QSY.pdf}    \\
+        \includegraphics[width=30.8mm]{./CoverPagepic/QSY.pdf}    \\
       \else
-        \includegraphics[width=22.8mm]{./CoverPagepic/QSY.eps}    \\
+        \includegraphics[width=30.8mm]{./CoverPagepic/QSY.eps}    \\
       \fi
  
-      \vspace{30mm}
+      \vspace{10mm}
 
       % 论文题目部分内容，可以修改
       \begin{tabular}{rl}
-        {\bfseries\fangsong\zihao{3}\ZJU@label@Etitle:} 
+        {\fangsong\zihao{-2}\ZJU@label@Etitle:} 
         &
-        {\bfseries\zihao{-2}\ZJUunderline[310pt]{\ZJU@value@Etitle}}\\[3mm]
+        {\zihao{-2}\ZJUunderline[310pt]{\ZJU@value@Etitle}}\\[3mm]
         &
         %英文标题的多行判断，如果一行写不下，有第二行显示，否则不显示第二行
         \ifx\ZJU@value@Etitletl\undefined
           \hfil
         \else
-          {\bfseries\zihao{-2}\ZJUunderline[310pt]{\ZJU@value@Etitletl}}
+          {\zihao{-2}\ZJUunderline[310pt]{\ZJU@value@Etitletl}}
         \fi\\[3mm]
 		%英文标题的多行判断，如果两行写不下，有第三行显示，否则不显示第三行
 		&		
 		\ifx\ZJU@value@Etitletll\undefined
           \hfil
         \else
-          {\bfseries\zihao{-2}\ZJUunderline[310pt]{\ZJU@value@Etitletll}}
+          {\zihao{-2}\ZJUunderline[310pt]{\ZJU@value@Etitletll}}
         \fi\\[3mm]
       \end{tabular}
       % 这个距离可以修改
       \vspace{30mm}  
       % 左右两边字体不同，定义两个宏AB来简化代码，这个功能用到了array宏包
-      \newcolumntype{A}{>{\songti}r<{}}
+      \newcolumntype{A}{>{\songti}l<{}}
       \newcolumntype{B}{>{\fangsong}l<{}}
-      \zihao{4}
-      \begin{tabular}{A@{：}B}
-        \ZJU@label@Eauthor & \ZJUunderline[200pt]{\ZJU@value@Eauthor} \\[3mm]
-        \ZJU@label@Esupervisor & \ZJUunderline[200pt]{\ZJU@value@Esupervisor} \\[3mm]
+      \zihao{3}
+      \begin{tabular}{A@{}B}
+        \ZJU@label@Eauthor: & \ZJUunderline[200pt]{\ZJU@value@Eauthor} \\[3mm]
+        \ZJU@label@Esupervisor: & \ZJUunderline[200pt]{\ZJU@value@Esupervisor} \\[3mm]
         % 判断有没有合作导师
         \ifx\ZJU@value@Ecpsupervisor\undefined
-        \else
-         \ZJU@label@Ecpsupervisor
+        %\else
+        % \ZJU@label@Ecpsupervisor
         \fi
         &
         \ifx\ZJU@value@Ecpsupervisor\undefined
@@ -410,16 +441,17 @@ includehead, includefoot]{geometry}
         \else
           \ZJUunderline[200pt]{\ZJU@value@Ecpsupervisor} \\[3mm]
         \fi
-        \ZJU@label@Emajor & \ZJUunderline[200pt]{\ZJU@value@Emajor} \\[3mm]
-        \ZJU@label@Eresearchdm & \ZJUunderline[200pt]{\ZJU@value@Eresearchdm} \\[3mm]
-        \ZJU@label@Einstitute & \ZJUunderline[200pt]{\ZJU@value@Einstitute} \\
+        \ZJU@label@Emajor: & \ZJUunderline[200pt]{\ZJU@value@Emajor} \\[3mm]
+        %\ZJU@label@Eresearchdm & \ZJUunderline[200pt]{\ZJU@value@Eresearchdm} \\[3mm]
+        \ZJU@label@Einstitute: & \ZJUunderline[200pt]{\ZJU@value@Einstitute} \\[3mm]
+        \ZJU@label@Esubmitdate: & \ZJUunderline[200pt]{\ZJU@value@Esubmitdate}\\
       \end{tabular}
     \end{center}
     % 插入适当的空白
-    \vfill
+    %\vfill
     % 最后一项 论文提交日期
-    \hfil{\bfseries\songti\zihao{-3}\hspace{4em}\ZJU@label@Esubmitdate%
-    \ZJUunderline[150pt]{\ZJU@value@Esubmitdate}}\hfil
+    %\hfil{\songti\zihao{-3}\hspace{4em}\ZJU@label@Esubmitdate%
+    %\ZJUunderline[150pt]{\ZJU@value@Esubmitdate}}\hfil
   }
 }
 
@@ -442,7 +474,7 @@ includehead, includefoot]{geometry}
       \fi}
 
       % 插入一段距离
-      \vspace{12mm}
+      \vspace{15mm}
 
       % 插入浙大徽标
       \ifpdf
@@ -452,22 +484,22 @@ includehead, includefoot]{geometry}
       \fi
 
       % 插入空白
-      \vspace{8mm}
+      \vspace{12mm}
       {\bfseries\songti\zihao{3}
       论文作者签名：
       \ifpdf
-          \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_ch.pdf}}
+          \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch.pdf}}
       \else
-          \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_ch.eps}}
+          \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch.eps}}
       \fi
       {\bfseries\songti\zihao{3}\textcolor{white}{。}}\\
 
       %\hfil\\
       指导教师签名：}
       \ifpdf
-           \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_ch_s.pdf}}
+           \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch_s.pdf}}
       \else
-           \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_ch_s.eps}}
+           \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch_s.eps}}
       \fi
       {\bfseries\songti\zihao{3}\textcolor{white}{。}}\\
  
@@ -532,13 +564,13 @@ includehead, includefoot]{geometry}
     \linespread{1.3} 
     \begin{center}
       % 英文论文题目
-      {\bf\zihao{-2}\ZJUunderline[340pt]{\ZJU@value@englishtitle}\\
+      {\bf\zihao{-2}\ZJUunderline[360pt]{\ZJU@value@englishtitle}\\
       \vspace{1ex}
       % 判断英文标题有无第二行
       \ifx\ZJU@value@englishtitletl\undefined
         \hfil
       \else
-        \ZJUunderline[300pt]{\ZJU@value@englishtitletl}
+        \ZJUunderline[320pt]{\ZJU@value@englishtitletl}
       \fi}
 
       % 插入一段空白距离
@@ -557,17 +589,17 @@ includehead, includefoot]{geometry}
       % 作者英文签名
       {\bf\zihao{3}\hspace{1.7em}Author's signature:
       \ifpdf
-      \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_en.pdf}}\\
+      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en.pdf}}\\
       \else
-      \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_en.eps}}\\
+      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en.eps}}\\
       \fi
       %\hfil\\
       % 导师英文签名
       Supervisor's signature:
       \ifpdf
-      \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_en_s.pdf}}\\
+      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en_s.pdf}}\\
       \else
-      \ZJUunderline[120pt]{\includegraphics[width=100pt,height=45pt]{./Signature/sign_en_s.eps}}\\
+      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en_s.eps}}\\
       \fi}
     \end{center}
   
@@ -633,12 +665,18 @@ includehead, includefoot]{geometry}
 % 每一个chapter开始的第一页的页眉页脚样式为plain样式
 \fancypagestyle{plain}{%
   \fancyhf{}% 先清除当前页面的页眉页脚定义，是fancyhdr包中的定义
-  \renewcommand{\headrulewidth}{0pt}%
-  \renewcommand{\footrulewidth}{0pt}%
+  %\renewcommand{\headrulewidth}{0pt}%
+  %\renewcommand{\footrulewidth}{0pt}%
   \if@twoside
-    \fancyfoot[RO]{\zihao{-5} ~\thepage~}
-    \fancyfoot[LE]{\zihao{-5} ~\thepage~}
+    %\fancyfoot[RO]{\zihao{-5} ~\thepage~}
+    %\fancyfoot[LE]{\zihao{-5} ~\thepage~}
+    \fancyhead[L]{\songti\zihao{-5}\ZJU@value@school\ZJU@value@degree\ZJU@label@thesis}
+    \fancyhead[R]{\songti\zihao{-5}\leftmark}
+    \fancyfoot[C]{\zihao{-5} ~\thepage~}
+    \fancyfoot[C]{\zihao{-5} ~\thepage~}
   \else
+    \fancyhead[L]{\songti\zihao{-5}\ZJU@value@school\ZJU@value@degree\ZJU@label@thesis}
+    \fancyhead[R]{\songti\zihao{-5}\leftmark}
     \fancyfoot[C]{\zihao{-5} ~\thepage~}
   \fi
 }
@@ -649,10 +687,14 @@ includehead, includefoot]{geometry}
   \fancyhf{} %fancyhf实际是fancyhead与fancyfoot的合体，它的参数用H和F指定
   % 分单双面判断页眉的设置
   \if@twoside
-    \fancyhead[CE]{\songti\zihao{-5}\ZJU@value@school\ZJU@value@degree\ZJU@label@thesis}
-    \fancyhead[CO]{\songti\zihao{-5}\leftmark}
-    \fancyfoot[RO]{\zihao{-5} ~\thepage~}
-    \fancyfoot[LE]{\zihao{-5} ~\thepage~}
+    %\fancyhead[CE]{\songti\zihao{-5}\ZJU@value@school\ZJU@value@degree\ZJU@label@thesis}
+    %\fancyhead[CO]{\songti\zihao{-5}\leftmark}
+    %\fancyfoot[RO]{\zihao{-5} ~\thepage~}
+    %\fancyfoot[LE]{\zihao{-5} ~\thepage~}
+    \fancyhead[L]{\songti\zihao{-5}\ZJU@value@school\ZJU@value@degree\ZJU@label@thesis}
+    \fancyhead[R]{\songti\zihao{-5}\leftmark}
+    \fancyfoot[C]{\zihao{-5} ~\thepage~}
+    \fancyfoot[C]{\zihao{-5} ~\thepage~}
   \else
     \fancyhead[L]{\songti\zihao{-5}\ZJU@value@school\ZJU@value@degree\ZJU@label@thesis}
     \fancyhead[R]{\songti\zihao{-5}\leftmark}
@@ -660,20 +702,6 @@ includehead, includefoot]{geometry}
   \fi
 
 % 设置章节标题格式
-%\CTEXsetup[name={,}]{chapter}
-%\CTEXsetup[number={\arabic{chapter}}]{chapter}
-%\CTEXsetup[format={\noindent}]{chapter}
-%\CTEXsetup[nameformat={\bfseries\zihao{-3}}]{chapter}
-%\CTEXsetup[titleformat={\bfseries\songti\zihao{-3}}]{chapter}
-%\CTEXsetup[format={\noindent}]{section}
-%\CTEXsetup[nameformat={\bfseries\zihao{4}}]{section}
-%\CTEXsetup[titleformat={\bfseries\songti\zihao{4}}]{section}
-%\CTEXsetup[format={\noindent}]{subsection}
-%\CTEXsetup[nameformat={\zihao{-4}}]{subsection}
-%\CTEXsetup[titleformat={\songti\zihao{-4}}]{subsection}
-%\CTEXsetup[format={\noindent}]{subsubsection}
-%\CTEXsetup[nameformat={\zihao{-4}}]{subsubsection}
-%\CTEXsetup[titleformat={\songti\zihao{-4}}]{subsubsection}
 \CTEXsetup[name={第\hspace{0.2em},\hspace{0.2em}章},beforeskip={1em plus .2em minus .2em},afterskip={1em plus .2em minus .2em}]{chapter}
 \CTEXsetup[number={\arabic{chapter}}]{chapter}
 \CTEXsetup[format={\centering}]{chapter}
@@ -759,17 +787,20 @@ includehead, includefoot]{geometry}
   \addtocontents{toc}{\cftpagenumberson{chapter}}
 }
 
+\usepackage{mathtools}
+\newtagform{eqtag}{公式~(}{)}
+\usetagform{eqtag}
+
 % 插图目录
-% 给目录项前添加“图”字
 \usepackage{tocloft}
 
 \newlength{\mylen}
+
 \renewcommand{\cftfigpresnum}{\figurename\enspace}
 \renewcommand{\cftfigaftersnum}{}
 \settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
 \addtolength{\cftfignumwidth}{\mylen}
 
-% 生成插图目录
 \newcommand\ZJUListofFigures{%
   \renewcommand{\cftfigfont}{\songti\zihao{-4}}
   \renewcommand{\cftfigleader}{\cftdotfill{\cftdot}}
@@ -780,12 +811,11 @@ includehead, includefoot]{geometry}
 }
 
 % 附表目录
-% 给目录项前添加“表”字
 \renewcommand{\cfttabpresnum}{\tablename\enspace}
 \renewcommand{\cfttabaftersnum}{}
 \settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
 \addtolength{\cfttabnumwidth}{\mylen}
-% 生成表格目录
+
 \newcommand\ZJUListofTables{%
   \renewcommand{\cfttabfont}{\songti\zihao{-4}}
   \renewcommand{\cfttableader}{\cftdotfill{\cftdot}}
@@ -871,5 +901,8 @@ includehead, includefoot]{geometry}
   {\newline}% Space after thm head: \newline = linebreak
   {}%         Thm head spec
 \endinput
+
+
+
 %%
 %% End of file `ZJUthesis.cls'.
