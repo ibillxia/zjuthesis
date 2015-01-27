@@ -1,13 +1,12 @@
-\documentclass[oneside]{ZJUthesis}
+\documentclass[twoside]{ZJUthesis}
 
 % 该文档中首字符为“%”的均为注释行，不会在论文中出现
-
 % 论文默认为双面模式，需单面模式请将第一行换为如下所示：
 % \documentclass[oneside]{ZJUthesis}
 
 % 取消目录中链接的颜色，方便打印
 % 如需颜色，请将“false”改为“true”
-\hypersetup{colorlinks=true}
+\hypersetup{colorlinks=false}
 
 % 这里几行代码使得目录中的“第几章” 和后面的章节名称不致发生重叠
 \makeatletter
@@ -20,6 +19,29 @@
 \makeatother
 
 %\usepackage[sectionbib]{chapterbib}
+
+\makeatletter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+  \if@mainmatter
+    \refstepcounter{chapter}%
+    \typeout{\@chapapp\space\thechapter.}%
+    \addcontentsline{toc}{chapter}%
+    {\protect\numberline{第 \chaptername 章}\hspace{1em}#1}
+%    {\protect\numberline{\chaptername}\hspace{4em}#1}
+  \else
+    \addcontentsline{toc}{chapter}{#1}%
+  \fi
+  \else
+  \addcontentsline{toc}{chapter}{#1}%
+  \fi
+  \chaptermark{#1}%
+  \if@twocolumn
+  \@topnewpage[\@makechapterhead{#2}]%
+  \else
+  \@makechapterhead{#2}%
+\@afterheading
+\fi}
+\makeatother
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

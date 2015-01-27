@@ -283,9 +283,9 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
         \ZJU@label@SecretLevel~
         \ZJUunderline[60pt]{\ZJU@value@SecretLevel}
       \fi
-      \hfill
-      \ZJU@label@PersonalID~
-      \ZJUunderline[60pt]{\ZJU@value@PersonalID}\\
+      \hfill \hspace{2em} \\
+      %\ZJU@label@PersonalID~
+      %\ZJUunderline[60pt]{\ZJU@value@PersonalID}\\
       }
       % 这个尺寸可以更改
       \vspace{10mm}
@@ -488,18 +488,18 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
       {\bfseries\songti\zihao{3}
       论文作者签名：
       \ifpdf
-          \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch.pdf}}
+          \ZJUunderline[120pt]{} %\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch.pdf}}
       \else
-          \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch.eps}}
+          \ZJUunderline[120pt]{} %\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch.eps}}
       \fi
       {\bfseries\songti\zihao{3}\textcolor{white}{。}}\\
 
       %\hfil\\
       指导教师签名：}
       \ifpdf
-           \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch_s.pdf}}
+           \ZJUunderline[120pt]{} %\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch_s.pdf}}
       \else
-           \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch_s.eps}}
+           \ZJUunderline[120pt]{} %\includegraphics[width=80pt,height=36pt]{./Signature/sign_ch_s.eps}}
       \fi
       {\bfseries\songti\zihao{3}\textcolor{white}{。}}\\
  
@@ -589,17 +589,17 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
       % 作者英文签名
       {\bf\zihao{3}\hspace{1.7em}Author's signature:
       \ifpdf
-      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en.pdf}}\\
+      \ZJUunderline[120pt]{} \\ %\includegraphics[width=80pt,height=36pt]{./Signature/sign_en.pdf}}\\
       \else
-      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en.eps}}\\
+      \ZJUunderline[120pt]{} \\ %\includegraphics[width=80pt,height=36pt]{./Signature/sign_en.eps}}\\
       \fi
       %\hfil\\
       % 导师英文签名
       Supervisor's signature:
       \ifpdf
-      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en_s.pdf}}\\
+      \ZJUunderline[120pt]{} \\ %\includegraphics[width=80pt,height=36pt]{./Signature/sign_en_s.pdf}}\\
       \else
-      \ZJUunderline[120pt]{\includegraphics[width=80pt,height=36pt]{./Signature/sign_en_s.eps}}\\
+      \ZJUunderline[120pt]{} \\ %\includegraphics[width=80pt,height=36pt]{./Signature/sign_en_s.eps}}\\
       \fi}
     \end{center}
   
@@ -756,6 +756,19 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
 %英文关键字
 \newcommand\englishkeywords[1]{%
   \vspace{2ex}\noindent{\bf \ZJU@label@englishkeywords} #1}
+
+%这几行防止目录、图目录以及表目录 出现在目录中
+\renewcommand\tableofcontents{%
+\if@twocolumn
+  \@restonecoltrue\onecolumn
+\else
+  \@restonecolfalse
+\fi
+\chapter*{\contentsname}%
+\@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+\@starttoc{toc}%
+\if@restonecol\twocolumn\fi
+}
 
 % 生成目录（论文中称目次）
 \newcommand\ZJUcontents{%
