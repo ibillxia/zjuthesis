@@ -115,6 +115,9 @@
 % 生成封面
 \makeCoverPage
 
+% 生成英文封面
+\makeECoverPage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 中文题名页内容
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,9 +144,8 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 英文封面内容，硕士论文可不要此页
+%% 英文题名内容
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 英文题名
 \englishtitle{English Title The 1st Line}
 % 如果题名一行写不下，就写到第二行，不需要则将其注释掉
 \englishtitletl{English Title The 2nd Line}
@@ -164,7 +166,7 @@
 \EcommissionerD{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
 \EcommissionerE{Name\hspace{1.5em}Professional Title\hspace{1.5em}Organization}
 
-% 生成英文封面
+% 生成英文题名页
 \makeenglishtitle
 
 
@@ -205,6 +207,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{./Chapters/abstractE}
 {\pagestyle{empty}\mbox{}\newpage\pagestyle{empty}}  % 无页眉页脚的空白页
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 论文部分开始2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUfrontmatterTwo
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 目录页
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 

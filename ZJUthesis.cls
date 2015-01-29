@@ -270,20 +270,20 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
     \linespread{1.3}
     \begin{center}
       {%\hspace{2em}
-      \ZJU@label@classification~
-      \ZJUunderline[60pt]{\ZJU@value@classification}
-      \hfill
-      \ZJU@label@serialnumber~
-      \ZJUunderline[60pt]{\ZJU@value@serialnumber} \\
-      \vspace{3pt}
-      \ifx\ZJU@value@IsSecret\undefined
+      %\ZJU@label@classification~
+      %\ZJUunderline[60pt]{\ZJU@value@classification}
+      %\hfill
+      %\ZJU@label@serialnumber~
+      %\ZJUunderline[60pt]{\ZJU@value@serialnumber} \\
+      %\vspace{3pt}
+      \hspace{2em} \hfill \hspace{2em} 
+      \ifx\ZJU@value@IsSecret\undefined \\
       \else
         %\hspace{2em}
         %\hfill
         \ZJU@label@SecretLevel~
-        \ZJUunderline[60pt]{\ZJU@value@SecretLevel}
+        \ZJUunderline[60pt]{\ZJU@value@SecretLevel} \\
       \fi
-      \hfill \hspace{2em} \\
       %\ZJU@label@PersonalID~
       %\ZJUunderline[60pt]{\ZJU@value@PersonalID}\\
       }
@@ -315,7 +315,7 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
     \begin{center}
       % 论文题目部分内容，可以修改
       \begin{tabular}{rl}
-        {\songti\zihao{-2}\ZJU@label@title:} 
+        {\songti\zihao{-2}\ZJU@label@title} 
         &
         \songti\zihao{-2} \ZJUunderline[260pt]{\ZJU@value@title} \\[3mm]
         &
@@ -345,8 +345,8 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
       \newcolumntype{B}{>{\fangsong}l<{}}
       \zihao{4}
       \begin{tabular}{A@{ }B}
-        \ZJU@label@author : & \ZJUunderline[200pt]{\ZJU@value@author} \\[3mm]
-        \ZJU@label@supervisor : & \ZJUunderline[200pt]{\ZJU@value@supervisor} \\[3mm]
+        \ZJU@label@author  & \ZJUunderline[200pt]{\ZJU@value@author} \\[3mm]
+        \ZJU@label@supervisor  & \ZJUunderline[200pt]{\ZJU@value@supervisor} \\[3mm]
         % 判断有没有合作导师
         \ifx\ZJU@value@cpsupervisor\undefined
         %\else
@@ -358,10 +358,10 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
         \else
           \ZJUunderline[200pt]{\ZJU@value@cpsupervisor} \\[3mm]
         \fi
-        \ZJU@label@major : & \ZJUunderline[200pt]{\ZJU@value@major} \\[3mm]
+        \ZJU@label@major  & \ZJUunderline[200pt]{\ZJU@value@major} \\[3mm]
         %\ZJU@label@researchdm & \ZJUunderline[200pt]{\ZJU@value@researchdm} \\[3mm]
-        \ZJU@label@institute : & \ZJUunderline[200pt]{\ZJU@value@institute} \\[3mm]
-        \ZJU@label@submitdate : & \ZJUunderline[200pt]{\ZJU@value@submitdate} \\
+        \ZJU@label@institute  & \ZJUunderline[200pt]{\ZJU@value@institute} \\[3mm]
+        \ZJU@label@submitdate  & \ZJUunderline[200pt]{\ZJU@value@submitdate} \\
       \end{tabular}
     \end{center}
     % 插入适当的空白
@@ -399,7 +399,7 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
         \includegraphics[width=30.8mm]{./CoverPagepic/QSY.eps}    \\
       \fi
  
-      \vspace{10mm}
+      \vspace{20mm}
 
       % 论文题目部分内容，可以修改
       \begin{tabular}{rl}
@@ -648,8 +648,13 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
 
 \newcommand\ZJUfrontmatter{%
   \frontmatter
-  % 正文内容前的部分页码格式为大写罗马数字
+  % 正文内容前的部分页码格式为小写罗马数字
+  \pagenumbering{roman}
+}
 
+\newcommand\ZJUfrontmatterTwo{%
+  \frontmatter
+  % 正文内容前的部分页码格式为大写罗马数字
   \pagenumbering{Roman}
 }
 
@@ -770,6 +775,30 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
 \if@restonecol\twocolumn\fi
 }
 
+\renewcommand\listoffigures{%
+\if@twocolumn
+  \@restonecoltrue\onecolumn
+\else
+  \@restonecolfalse
+\fi
+\chapter*{\listfigurename}%
+\@mkboth{\MakeUppercase\listfigurename}{\MakeUppercase\listfigurename}%
+\@starttoc{lof}%
+\if@restonecol\twocolumn\fi
+}
+
+\renewcommand\listoftables{%
+\if@twocolumn
+  \@restonecoltrue\onecolumn
+\else
+  \@restonecolfalse
+\fi
+\chapter*{\listtablename}%
+\@mkboth{\MakeUppercase\listtablename}{\MakeUppercase\listtablename}%
+\@starttoc{lot}%
+\if@restonecol\twocolumn\fi
+}
+
 % 生成目录（论文中称目次）
 \newcommand\ZJUcontents{%
   % 修改目录的格式
@@ -791,8 +820,8 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
   \setlength{\cftbeforechapskip}{-2pt}
   \setlength{\cftbeforesecskip}{-2pt}
   \setlength{\cftbeforesubsecskip}{-2pt}
-  \setlength{\cftsecindent}{2eM}
-  \setlength{\cftsubsecindent}{4eM}
+  \setlength{\cftsecindent}{1eM}
+  \setlength{\cftsubsecindent}{2eM}
   
   \setcounter{tocdepth}{2}
   \addtocontents{toc}{\cftpagenumbersoff{chapter}}
@@ -800,13 +829,13 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
   \addtocontents{toc}{\cftpagenumberson{chapter}}
 }
 
+% 公式编号前添加“公式”两字
 \usepackage{mathtools}
 \newtagform{eqtag}{公式~(}{)}
 \usetagform{eqtag}
 
-% 插图目录
+% 图目录
 \usepackage{tocloft}
-
 \newlength{\mylen}
 
 \renewcommand{\cftfigpresnum}{\figurename\enspace}
@@ -822,8 +851,9 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
   \setlength{\cftbeforefigskip}{-2pt}
   \listoffigures
 }
+\captionsetup[subfigure]{labelfont=normalfont,textfont=normalfont}
 
-% 附表目录
+% 表目录
 \renewcommand{\cfttabpresnum}{\tablename\enspace}
 \renewcommand{\cfttabaftersnum}{}
 \settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
@@ -844,18 +874,18 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
 {}
 
 % 参考文献部分
-\DeclareRobustCommand\citenum
-   {\begingroup
-     \NAT@swatrue\let\NAT@ctype\z@\NAT@parfalse\let\textsuperscript\relax
-     \NAT@citexnum[][]}
-
+\DeclareRobustCommand\citenum{
+  \begingroup
+  \NAT@swatrue\let\NAT@ctype\z@\NAT@parfalse\let\textsuperscript\relax
+  \NAT@citexnum[][]
+}
 \newcommand\ZJUthesisbib[1]{%
-  \setcitestyle{numbers, round, comma, aysep={}, yysep={,}, notesep={,}}
+  \setcitestyle{numbers, round, comma, aysep={,}, yysep={,}, notesep={:}}
   \setlength{\bibsep}{0.5ex}
   \setlength{\bibhang}{2em}
   \renewcommand{\bibfont}{\songti\zihao{5}}
-
-  \bibliographystyle{ZJUthesis}
+  %\bibliographystyle{plain}
+  \bibliographystyle{ZJUthesis2}
   \bibliography{#1}
 }
 
