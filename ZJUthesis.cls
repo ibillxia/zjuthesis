@@ -269,23 +269,24 @@ breakatwhitespace=false        % sets if automatic breaks should only happen at 
     \songti\zihao{-4}
     \linespread{1.3}
     \begin{center}
-      {%\hspace{2em}
-      %\ZJU@label@classification~
-      %\ZJUunderline[60pt]{\ZJU@value@classification}
-      %\hfill
-      %\ZJU@label@serialnumber~
-      %\ZJUunderline[60pt]{\ZJU@value@serialnumber} \\
-      %\vspace{3pt}
-      \hspace{2em} \hfill \hspace{2em} 
+      {\hspace{2em}
+      \ZJU@label@classification~
+      \ZJUunderline[60pt]{\ZJU@value@classification}
+      \hfill
+      \ZJU@label@serialnumber~
+      \ZJUunderline[60pt]{\ZJU@value@serialnumber} \\
+      % \vspace{3pt}
+      % \hspace{2em} \hfill \hspace{2em} 
       \ifx\ZJU@value@IsSecret\undefined \\
       \else
-        %\hspace{2em}
+        \hspace{2em}
         %\hfill
         \ZJU@label@SecretLevel~
-        \ZJUunderline[60pt]{\ZJU@value@SecretLevel} \\
+        \ZJUunderline[60pt]{\ZJU@value@SecretLevel} 
       \fi
-      %\ZJU@label@PersonalID~
-      %\ZJUunderline[60pt]{\ZJU@value@PersonalID}\\
+      \hfill
+      \ZJU@label@PersonalID~
+      \ZJUunderline[60pt]{\ZJU@value@PersonalID}\\
       }
       % 这个尺寸可以更改
       \vspace{10mm}
